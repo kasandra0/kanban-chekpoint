@@ -30,7 +30,7 @@ router.post('/auth/register', (req, res) => {
       res.status(400).send(err)
     })
 })
-
+// LOGIN ROUTE
 router.post('/auth/login', (req, res) => {
   //FIND A USER BASED ON PROVIDED EMAIL
   Users.findOne({

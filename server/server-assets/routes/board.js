@@ -12,6 +12,13 @@ router.get('/', (req, res, next) => {
       next()
     })
 })
+//Get specific board
+router.get('/:boardId', (req, res, next) => {
+  Boards.findById(req.params.boardId)
+    .then(board => {
+      res.send(board)
+    }).catch(err => console.log('cannot get board', err))
+})
 
 //POST
 router.post('/', (req, res, next) => {
@@ -48,14 +55,14 @@ router.put('/:id', (req, res, next) => {
     })
 })
 
-//DELETE
+//DELETE a board
 router.delete('/:id', (req, res, next) => {
   Boards.findById(req.params.id)
     .then(board => {
       if (!board.authorId.equals(req.session.uid)) {
         return res.status(401).send("ACCESS DENIED!")
       }
-      board.delete(err => {
+      board.remove(err => {
         if (err) {
           console.log(err)
           next()
