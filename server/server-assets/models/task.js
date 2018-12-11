@@ -10,10 +10,12 @@ let comment = new Schema({
 })
 
 let schema = new Schema({
-  listId: { type: ObjectId, ref: 'Board', required: true },
+  listId: { type: ObjectId, ref: 'List', required: true },
   desc: { type: String, required: true },
   comments: [comment],
+  boardId: { type: ObjectId, ref: 'Board' },
+
   authorId: { type: ObjectId, ref: 'User' },
   created: { type: Number, required: true, default: Date.now() }
-})
+}, { usePushEach: true })
 module.exports = mongoose.model(schemaName, schema)

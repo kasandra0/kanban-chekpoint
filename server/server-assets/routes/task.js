@@ -40,7 +40,7 @@ router.put('/:taskId', (req, res, next) => {
 router.post('/:taskId/comments', (req, res, next) => {
   Tasks.findById(req.params.taskId)
     .then(task => {
-      task.comments.push(req.body.content)
+      task.comments.push(req.body)
       task.save(err => {
         if (err) {
           return next(err)

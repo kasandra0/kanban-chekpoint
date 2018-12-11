@@ -68,7 +68,7 @@ router.delete('/:id', (req, res, next) => {
           next()
           return
         }
-        res.send("Successfully Deleted")
+        res.send("Successfully Deleted Board")
       });
     })
 })
