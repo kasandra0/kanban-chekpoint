@@ -8,6 +8,7 @@
       </form>
       <li v-for="c in task.comments">
         {{c.content}}
+        <button @click="deleteComment(c._id)">x</button>
       </li>
     </ul>
   </div>
@@ -39,8 +40,14 @@
           comment: this.newComment,
           task: this.task
         }
-        debugger
         this.$store.dispatch('addComment', payload)
+      },
+      deleteComment(commentId) {
+
+        let i = this.task.comments.findIndex(c => c._id == commentId)
+        this.task.comments.splice(i, 1)
+        debugger
+        this.$store.dispatch('editTask', this.task)
       }
     }
   }

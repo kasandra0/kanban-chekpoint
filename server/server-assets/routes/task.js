@@ -36,8 +36,8 @@ router.put('/:taskId', (req, res, next) => {
     .catch(err => console.log('cannot update task', err))
 })
 
-//add a comment to a task
-router.post('/:taskId/comments', (req, res, next) => {
+//add a comment to taskId
+router.put('/:taskId/comments', (req, res, next) => {
   Tasks.findById(req.params.taskId)
     .then(task => {
       task.comments.push(req.body)
@@ -49,5 +49,6 @@ router.post('/:taskId/comments', (req, res, next) => {
       })
     })
 })
+
 
 module.exports = router

@@ -119,6 +119,11 @@ export default new Vuex.Store({
           dispatch('getTasks', newTask.listId)
         })
     },
+    updateTask({ commit, dispatch }, editedTask) {
+      {
+
+      }
+    },
     deleteTask({ commit, dispatch }, task) {
       api.delete('/tasks/' + task._id)
         .then(res => {
@@ -127,10 +132,18 @@ export default new Vuex.Store({
     },
     //Add comment
     addComment({ commit, dispatch }, payload) {
-      api.post('/tasks/' + payload.task._id + '/comments', payload.comment)
+      api.put('/tasks/' + payload.task._id + '/comments', payload.comment)
         .then(res => {
           dispatch('getTasks', payload.task.listId)
         })
+    },
+    // Edit task or delete comment
+    editTask({ commit, dispatch }, editedTask) {
+      api.put('/tasks/' + editedTask._id, editedTask)
+        .then(res => {
+          dispatch('getTasks', editedTask.listId)
+        })
+        .catch(err => console.log('cannot edit task', err))
     }
 
   }
