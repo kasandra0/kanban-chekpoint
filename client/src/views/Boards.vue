@@ -25,13 +25,15 @@
   export default {
     name: "boards",
     created() {
-      //blocks users not logged in
-      if (!this.$store.state.user._id) {
-        this.$router.push({ name: "login" });
-      }
+      this.$store.dispatch('authenticate')
     },
     mounted() {
-      // this.$store.dispatch("getBoards");
+      // this.$store.dispatch("getBoards")
+      //blocks users not logged in
+      if (!this.$store.state.user._id) {
+        debugger
+        this.$router.push({ name: "login" });
+      };
     },
     data() {
       return {

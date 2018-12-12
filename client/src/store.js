@@ -55,7 +55,7 @@ export default new Vuex.Store({
           dispatch('getBoards')// instead of mounted
         })
         .catch(err => {
-          console.log(err)
+          console.log('cannot authenticate', err)
           router.push({ name: 'login' })
         })
     },
