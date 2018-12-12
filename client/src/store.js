@@ -52,7 +52,11 @@ export default new Vuex.Store({
       auth.get('authenticate')
         .then(res => {
           commit('setUser', res.data)
-          router.push({ name: 'boards' })
+          dispatch('getBoards')// instead of mounted
+        })
+        .catch(err => {
+          console.log('cannot authenticate', err)
+          router.push({ name: 'login' })
         })
     },
     login({ commit, dispatch }, creds) {
@@ -93,6 +97,7 @@ export default new Vuex.Store({
     getTasks({ commit, dispatch }, listId) {
       api.get('/tasks/' + listId)
         .then(res => {
+          console.log('tasks', res.data)
           commit('setTasks', { tasks: res.data, listId })
         })
     }

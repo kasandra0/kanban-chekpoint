@@ -1,9 +1,15 @@
 <template>
-  <div class="col-4">
+  <div>
     <div></div>
-    {{list.title}}
-    {{list.desc}}
-    <task v-for="taskData in tasks" :task="taskData"></task>
+    <h4><b>{{list.title}}</b></h4>
+    <p><i>{{list.desc}}</i></p>
+    <ul>
+      <li v-for="taskData in tasks">
+        <task :task="taskData"></task>
+      </li>
+    </ul>
+
+
   </div>
 </template>
 
