@@ -31,7 +31,7 @@
       }
     },
     mounted() {
-      this.$store.dispatch("getBoards");
+      // this.$store.dispatch("getBoards");
     },
     data() {
       return {

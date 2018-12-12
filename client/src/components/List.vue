@@ -1,9 +1,10 @@
 <template>
   <div class="col-4">
     <div></div>
-    {{list.title}}
+    <h6> {{list.title}}</h6>
     {{list.desc}}
-    <task v-for="taskData in tasks" :task="taskData"></task>
+
+    <task v-for="taskData in tasks" :task="taskData" />
   </div>
 </template>
 
@@ -12,6 +13,7 @@
   export default {
     name: 'List',
     mounted() {
+      debugger
       this.$store.dispatch('getTasks', this.list._id)
     },
     computed: {

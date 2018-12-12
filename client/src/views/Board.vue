@@ -1,7 +1,8 @@
 <template>
   <div v-if="board.title" class="board">
-    {{board.title}}
-    {{board.description}}
+    <h2>{{board.title}}</h2>
+    <h5>{{board.description}}</h5>
+
     <div class="row">
       <div class="col-4 addList" height="150px">
         +new List
@@ -17,9 +18,9 @@
     name: "board",
     created() {
       //blocks users not logged in
-      if (!this.$store.state.user._id) {
-        this.$router.push({ name: "login" });
-      }
+      // if (!this.$store.state.user._id) {
+      //   this.$router.push({ name: "login" });
+      // }
       this.$store.dispatch('getLists', this.boardId)
     },
     mounted() {
