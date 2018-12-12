@@ -4,8 +4,15 @@
     <p><i>{{board.description}}</i></p>
 
     <div class="row">
-      <div class="col-4 addList" height="150px">
-        +new List
+      <div class="col-4 addList card" height="150px">
+        <form @submit.prevent="addList">
+          <div class="form-group">
+            <h5>Add a List</h5>
+            <input v-model="newList.title" type="text" name="title" placeholder="List title..." />
+            <input v-model="newList.desc" type="text" name="desc" placeholder="Description..." />
+            <button type="submit"> + New List</button>
+          </div>
+        </form>
       </div>
       <div v-for="listData in lists" class="col-4">
         <list :list="listData"></list>
@@ -18,28 +25,39 @@
   import List from '@/components/List.vue'
   export default {
     name: "board",
+    data() {
+      return {
+        newList: {
+          title: '',
+          desc: '',
+          boardId: ''
+        }
+      }
+    },
     created() {
       //blocks users not logged in
       // if (!this.$store.state.user._id) {
       //   this.$router.push({ name: "login" });
       // }
-      this.$store.dispatch('getLists', this.boardId)
+      this.$store.dispatch('getLists', this.$route.params.boardId)
     },
     mounted() {
 
 
     },
-    props: ["boardId"],
     computed: {
       board() {
-        return this.$store.state.boards.find(b => b._id == this.boardId)
+        return this.$store.state.boards.find(b => b._id == this.$route.params.boardId) || {}
       },
       lists() {
         return this.$store.state.lists
       }
     },
     methods: {
-
+      addList() {
+        this.newList.boardId = this.boardId
+        this.$store.dispatch('addList', this.newList)
+      }
     },
     components: {
       List
@@ -50,5 +68,9 @@
   .addList {
     background-color: rgb(108, 179, 255);
     color: white
+  }
+
+  .board {
+    color: white;
   }
 </style>

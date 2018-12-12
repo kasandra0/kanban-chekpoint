@@ -1,8 +1,5 @@
 <template>
   <div class="boards">
-    <nav class="navbar navbar-default">
-      <p class="white-text">Nav things up here</p>
-    </nav>
     <h2 class="white-text">Here's All of Your Boards</h2>
     <div class="col-12 d-flex justify-content-center">
       <div class="card addBoard-card">

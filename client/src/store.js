@@ -7,13 +7,13 @@ Vue.use(Vuex)
 
 let auth = Axios.create({
   baseURL: "//localhost:3000/auth/",
-  timeout: 3000,
+  timeout: 8000,
   withCredentials: true
 })
 
 let api = Axios.create({
   baseURL: "//localhost:3000/api/",
-  timeout: 3000,
+  timeout: 8000,
   withCredentials: true
 })
 
@@ -36,7 +36,7 @@ export default new Vuex.Store({
       state.lists = lists
     },
     setTasks(state, payload) {
-      state.tasks[payload.listId] = payload.tasks
+      Vue.set(state.tasks, payload.listId, payload.tasks)
     }
   },
   actions: {
@@ -91,6 +91,18 @@ export default new Vuex.Store({
       api.get('/lists/' + boardId)
         .then(res => {
           commit('setLists', res.data)
+        })
+    },
+    deleteList({ commit, dispatch }, list) {
+      api.delete('/lists/' + list._id)
+        .then(res => {
+          dispatch('getLists', list.boardId)
+        })
+    },
+    addList({ commit, dispatch }, newListData) {
+      api.post('/lists/', newListData)
+        .then(res => {
+          dispatch('getLists', newListData.boardId)
         })
     },
     // Get all tasks within a List

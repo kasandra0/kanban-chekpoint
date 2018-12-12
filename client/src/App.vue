@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <router-view />
+    <nav class="navbar navbar-default">
+      <p class="white-text">Nav things up here</p>
+    </nav>
   </div>
 </template>
 
