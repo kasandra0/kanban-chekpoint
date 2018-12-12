@@ -11,6 +11,9 @@
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    background-image: linear-gradient(#07253a, #0a3857, #0d4d79, #226a9b, #63abdb);
+    height: 700px;
+    background-attachment: fixed;
   }
 
   #nav {
