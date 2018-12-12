@@ -4,7 +4,6 @@
     <ul>
       <li v-for="c in task.comments">
         {{c.content}}
-        task
       </li>
     </ul>
   </div>

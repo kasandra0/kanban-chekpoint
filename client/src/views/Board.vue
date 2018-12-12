@@ -1,13 +1,15 @@
 <template>
   <div v-if="board.title" class="board">
     <h2>{{board.title}}</h2>
-    <h5>{{board.description}}</h5>
+    <p><i>{{board.description}}</i></p>
 
     <div class="row">
       <div class="col-4 addList" height="150px">
         +new List
       </div>
-      <list v-for="listData in lists" :list="listData" />
+      <div v-for="listData in lists" class="col-4">
+        <list :list="listData"></list>
+      </div>
     </div>
   </div>
 </template>
