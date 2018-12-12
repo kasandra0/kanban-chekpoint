@@ -6,7 +6,7 @@
     <button @click="deleteList">Delete List</button>
     <form @submit.prevent="addTask" class="form-group">
       <input v-model="newTask.desc" type="text" placeholder="Task to do..." name="desc" />
-      <button type="submit">+ New Task</button>
+      <button type="submit"><i class="fas fa-plus fas-3x"></i></button>
     </form>
     <ul>
       <li v-for="taskData in tasks">

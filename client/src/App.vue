@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <router-view />
     <nav class="navbar navbar-default">
-      <p class="white-text">Nav things up here</p>
+      <router-link :to="{name: 'boards'}">
+        <h5>All Boards</h5>
+      </router-link>
+      <router-view />
     </nav>
   </div>
 </template>

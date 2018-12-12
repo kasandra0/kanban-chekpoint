@@ -124,6 +124,13 @@ export default new Vuex.Store({
         .then(res => {
           dispatch('getTasks', task.listId)
         })
+    },
+    //Add comment
+    addComment({ commit, dispatch }, payload) {
+      api.post('/tasks/' + payload.task._id + '/comments', payload.comment)
+        .then(res => {
+          dispatch('getTasks', payload.task.listId)
+        })
     }
 
   }
