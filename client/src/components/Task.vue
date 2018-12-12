@@ -1,6 +1,6 @@
 <template>
   <div class="task">
-    <h5>{{task.desc}}</h5>
+    <h5>{{task.desc}} <i @click="deleteTask" class="fas fa-trash-alt fas-3x"></i></h5>
     <ul>
       <li v-for="c in task.comments">
         {{c.content}}
@@ -24,7 +24,11 @@
     computed: {
 
     },
-    methods: {}
+    methods: {
+      deleteTask() {
+        this.$store.dispatch('deleteTask', this.task)
+      }
+    }
   }
 
 </script>

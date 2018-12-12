@@ -5,13 +5,11 @@
 
     <div class="row">
       <div class="col-4 addList card" height="150px">
-        <form @submit.prevent="addList">
-          <div class="form-group">
-            <h5>Add a List</h5>
-            <input v-model="newList.title" type="text" name="title" placeholder="List title..." />
-            <input v-model="newList.desc" type="text" name="desc" placeholder="Description..." />
-            <button type="submit"> + New List</button>
-          </div>
+        <form @submit.prevent="addList" class="form-group">
+          <h5>Add a List</h5>
+          <input v-model="newList.title" type="text" name="title" placeholder="List title..." />
+          <input v-model="newList.desc" type="text" name="desc" placeholder="Description..." />
+          <button type="submit"> + New List</button>
         </form>
       </div>
       <div v-for="listData in lists" class="col-4">
@@ -55,7 +53,7 @@
     },
     methods: {
       addList() {
-        this.newList.boardId = this.boardId
+        this.newList.boardId = this.$route.params.boardId
         this.$store.dispatch('addList', this.newList)
       }
     },
