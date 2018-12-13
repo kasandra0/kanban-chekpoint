@@ -35,12 +35,9 @@
     },
     props: ['task'],
     computed: {
-<<<<<<< HEAD
-=======
       allLists() {
         return this.$store.state.lists
       }
->>>>>>> 230fef4855f753b9a0da879e09727b33b9b1d65d
     },
     methods: {
       moveTask(event) {
@@ -70,12 +67,8 @@
   }
 </script>
 
-<<<<<<< HEAD
-<style>
-=======
 <style scoped>
   .Task {
     background-color: #465266;
   }
->>>>>>> 230fef4855f753b9a0da879e09727b33b9b1d65d
 </style>
