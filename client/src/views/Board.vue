@@ -64,7 +64,7 @@
 </script>
 <style>
   .addList {
-    background-color: rgb(108, 179, 255);
+    background-color: rgb(40, 113, 191);
     color: white
   }
 

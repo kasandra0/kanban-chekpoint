@@ -43,7 +43,8 @@ router.put('/:taskId/comments', (req, res, next) => {
       task.comments.push(req.body)
       task.save(err => {
         if (err) {
-          return next(err)
+          console.log(err)
+          return res.status(400).send(err)
         }
         res.send(task)
       })
