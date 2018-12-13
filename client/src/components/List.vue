@@ -54,6 +54,5 @@
 <style scoped>
   .List {
     background-color: rgb(40, 113, 191);
-
   }
 </style>

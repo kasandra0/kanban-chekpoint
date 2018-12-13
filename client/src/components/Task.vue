@@ -70,6 +70,7 @@
 
 <style scoped>
   .Task {
-    background-color: #465266;
+    background-color: #9ba1ac;
+    color: #303743;
   }
 </style>
