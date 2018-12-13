@@ -1,9 +1,17 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-default">
-      <router-link :to="{name: 'boards'}">
-        <h5>All Boards</h5>
-      </router-link>
+    <nav class="navbar navbar-default row">
+      <div class="col-4 d-flex justify-content-start">
+        <router-link :to="{name: 'boards'}">
+          <h5>All Boards</h5>
+        </router-link>
+      </div>
+      <div class="col-4 justify-content-center">
+        <h1>KanBan</h1>
+      </div>
+      <div class="col-4 d-flex justify-content-end">
+        <button @click="logout">Logout</button>
+      </div>
       <router-view />
     </nav>
   </div>
@@ -34,3 +42,20 @@
     color: #42b983;
   }
 </style>
+<script>
+  export default {
+    // name: '',
+    // data() {
+    //   return {
+
+    //   }
+    // },
+    // computed: {},
+    methods: {
+      logout() {
+        this.$store.dispatch('logout')
+      }
+    }
+  }
+
+</script>
