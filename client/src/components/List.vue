@@ -1,8 +1,7 @@
 <template>
   <div class="List card">
-    <h4><b>{{list.title}}</b></h4>
+    <h4><b>{{list.title}} </b><i @click="deleteList" class="fas fa-trash-alt"></i></h4>
     <p><i>{{list.desc}}</i></p>
-    <button @click="deleteList">Delete List</button>
     <form @submit.prevent="addTask" class="form-group">
       <input v-model="newTask.desc" type="text" placeholder="Task to do..." name="desc" />
       <button type="submit"><i class="fas fa-plus fas-3x"></i></button>

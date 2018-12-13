@@ -3,9 +3,10 @@
     <h5>{{task.desc}} <i @click="deleteTask" class="fas fa-trash-alt fas-3x"></i></h5>
     <form @submit.prevent="moveTask($event)">
       <select name="listOptions">
+        <option>Select List</option>
         <option v-for="list in allLists " :value="list._id">{{list.title}}</option>
       </select>
-      <button type="submit">move list</button>
+      <button type="submit">Move List</button>
     </form>
     <form @submit.prevent="addComment">
       <input v-model="newComment.content" type="text" name="content" placeholder="Add a comment..." />
@@ -14,7 +15,7 @@
     <ul>
       <li v-for="c in task.comments">
         {{c.content}}
-        <button @click="deleteComment(c._id)">x</button>
+        <i @click="deleteComment(c._id)" class="fas fa-times-circle"></i>
       </li>
     </ul>
   </div>
