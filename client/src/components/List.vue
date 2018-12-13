@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <div></div>
+  <div class="List card">
     <h4><b>{{list.title}}</b></h4>
     <p><i>{{list.desc}}</i></p>
     <button @click="deleteList">Delete List</button>
@@ -8,11 +7,10 @@
       <input v-model="newTask.desc" type="text" placeholder="Task to do..." name="desc" />
       <button type="submit"><i class="fas fa-plus fas-3x"></i></button>
     </form>
-    <ul>
-      <li v-for="taskData in tasks">
-        <task :task="taskData"></task>
-      </li>
-    </ul>
+    <div v-for="taskData in tasks">
+      <task :task="taskData"></task>
+    </div>
+
 
 
   </div>
@@ -55,4 +53,8 @@
 </script>
 
 <style scoped>
+  .List {
+    background-color: rgb(40, 113, 191);
+
+  }
 </style>

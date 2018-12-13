@@ -66,6 +66,13 @@ export default new Vuex.Store({
           router.push({ name: 'boards' })
         })
     },
+    logout({ commit, dispatch }) {
+      auth.delete('/logout')
+        .then(res => {
+          console.log('User logged out')
+          router.push({ name: 'login' })
+        })
+    },
 
     //BOARDS
     getBoards({ commit, dispatch }) {
@@ -119,11 +126,6 @@ export default new Vuex.Store({
           dispatch('getTasks', newTask.listId)
         })
     },
-    updateTask({ commit, dispatch }, editedTask) {
-      {
-
-      }
-    },
     deleteTask({ commit, dispatch }, task) {
       api.delete('/tasks/' + task._id)
         .then(res => {
@@ -142,6 +144,7 @@ export default new Vuex.Store({
       api.put('/tasks/' + editedTask._id, editedTask)
         .then(res => {
           dispatch('getTasks', editedTask.listId)
+          dispatch('getTasks', editedTask.oldListId)
         })
         .catch(err => console.log('cannot edit task', err))
     }
