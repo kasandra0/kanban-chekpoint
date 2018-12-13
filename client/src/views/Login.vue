@@ -1,19 +1,21 @@
 <template>
   <div class="login py-3">
-    <form v-if="loginForm" @submit.prevent="loginUser">
-      <input type="email" v-model="creds.email" placeholder="email">
-      <input type="password" v-model="creds.password" placeholder="password">
+    <form v-if="loginForm" @submit.prevent="loginUser" class="form-group">
+      <h5 class="white-text">Login</h5>
+      <input type="email" v-model="creds.email" placeholder="email" class="form-control">
+      <input type="password" v-model="creds.password" placeholder="password" class="form-control">
       <button type="submit">Login</button>
     </form>
-    <form v-else @submit.prevent="register">
-      <input type="text" v-model="newUser.name" placeholder="name">
-      <input type="email" v-model="newUser.email" placeholder="email">
-      <input type="password" v-model="newUser.password" placeholder="password">
+    <form v-else @submit.prevent="register" class="form-group">
+      <h5 class="white-text">Get Started</h5>
+      <input type="text" v-model="newUser.name" placeholder="name" class="form-control">
+      <input type="email" v-model="newUser.email" placeholder="email" class="form-control">
+      <input type="password" v-model="newUser.password" placeholder="password" class="form-control">
       <button type="submit">Create Account</button>
     </form>
     <div @click="loginForm = !loginForm">
-      <p v-if="loginForm">No account? Click here to Register</p>
-      <p v-else>Already have an account? Click here to Login</p>
+      <p v-if="loginForm" class="white-text">No account? Click here to Register</p>
+      <p v-else class="white-text">Already have an account? Click here to Login</p>
     </div>
   </div>
 </template>
@@ -46,8 +48,12 @@
   };
 </script>
 <style scoped>
-  p {
+  .white-text {
     color: white;
     text-shadow: 1px 1px #000000;
+  }
+
+  input {
+    width: 44ch;
   }
 </style>

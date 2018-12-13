@@ -40,8 +40,6 @@
       this.$store.dispatch('getLists', this.$route.params.boardId)
     },
     mounted() {
-
-
     },
     computed: {
       board() {

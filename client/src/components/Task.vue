@@ -29,7 +29,6 @@
     },
     props: ['task'],
     computed: {
-
     },
     methods: {
       deleteTask() {
@@ -43,7 +42,6 @@
         this.$store.dispatch('addComment', payload)
       },
       deleteComment(commentId) {
-
         let i = this.task.comments.findIndex(c => c._id == commentId)
         this.task.comments.splice(i, 1)
         debugger
@@ -51,10 +49,7 @@
       }
     }
   }
-
 </script>
 
 <style>
-
-
 </style>
