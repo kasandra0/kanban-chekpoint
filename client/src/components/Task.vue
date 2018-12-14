@@ -1,13 +1,20 @@
 <template>
   <div class="Task card m-2">
     <h5>{{task.desc}} <i @click="deleteTask" class="fas fa-trash-alt fas-3x"></i></h5>
-    <form @submit.prevent="moveTask($event)">
-      <select name="listOptions">
-        <option>Select List</option>
-        <option v-for="list in allLists " :value="list._id">{{list.title}}</option>
-      </select>
-      <button type="submit">Move List</button>
-    </form>
+    <!-- ------------------------------ -->
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Move Task
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <p v-for="list in allLists" @click="moveTask(list._id)">{{list.title}}</p>
+      </div>
+    </div>
+
+
+    <!-- ----------------------------------- -->
     <form @submit.prevent="addComment">
       <input v-model="newComment.content" type="text" name="content" placeholder="Add a comment..." />
       <button type="submit"><i class="fas fa-plus fas-3x"></i></button>
@@ -41,11 +48,9 @@
       }
     },
     methods: {
-      moveTask(event) {
-
-        // update task with new listId
+      moveTask(listId) {
         this.task.oldListId = this.task.listId
-        this.task.listId = event.target.listOptions.value
+        this.task.listId = listId
         this.$store.dispatch('editTask', this.task)
 
       },
