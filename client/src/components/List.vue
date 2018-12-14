@@ -1,5 +1,5 @@
 <template>
-  <div class="List card">
+  <div class="List card m-2">
     <h4><b>{{list.title}} </b><i @click="deleteList" class="fas fa-trash-alt"></i></h4>
     <p><i>{{list.desc}}</i></p>
     <form @submit.prevent="addTask" class="form-group">
